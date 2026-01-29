@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+
+import Preloader from "../components/Preloader";
 import TopBar from "../components/TopBar";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
@@ -9,33 +12,31 @@ import Testimonials from "../components/Testimonials";
 import Footer from "../components/Footer";
 
 export default function Home() {
+
+  const [showLoader, setShowLoader] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowLoader(false);
+    }, 1800); // 1.8 sec (sweet spot UX)
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
-      {/* 🔝 Top Info Bar */}
+      {/* ⏳ Preloader */}
+      <Preloader isVisible={showLoader} />
+
+      {/* Main Content */}
       <TopBar />
-
-      {/* 🧭 Header / Navigation */}
       <Header />
-
-      {/* 🌈 Hero Section */}
       <Hero />
-
-      {/* 🧸 About Us */}
       <AboutUs />
-
-      {/* 🎒 Programs Preview */}
       <Programs />
-
-      {/* 📝 Admission Enquiry CTA */}
       <AdmissionsCTA />
-
-      {/* 💖 Why Choose Us */}
       <WhyChooseUs />
-
-      {/* ⭐ Parent Testimonials */}
       <Testimonials />
-
-      {/* 🛝 Footer */}
       <Footer />
     </>
   );
