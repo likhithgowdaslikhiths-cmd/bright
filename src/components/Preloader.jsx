@@ -1,68 +1,59 @@
+import { useEffect, useState } from "react";
+
 export default function Preloader({ isVisible }) {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    let value = 0;
+    const interval = setInterval(() => {
+      value += Math.floor(Math.random() * 8) + 3;
+      if (value >= 100) {
+        value = 100;
+        clearInterval(interval);
+      }
+      setProgress(value);
+    }, 120);
+
+    return () => clearInterval(interval);
+  }, [isVisible]);
+
   return (
     <div
       className={`
         fixed inset-0 z-[9999] flex items-center justify-center
-        bg-gradient-to-br from-yellow-200 via-pink-200 to-indigo-200
-        transition-opacity duration-700 ease-in-out
+        bg-black transition-opacity duration-700
         ${isVisible ? "opacity-100" : "opacity-0 pointer-events-none"}
       `}
     >
-      <div className="flex flex-col items-center gap-6">
+      <div className="text-white text-center font-mono space-y-6">
 
-        {/* 🧸 Mascot */}
-        <Mascot />
+        {/* LOADING TEXT */}
+        <div className="flex justify-between text-xl tracking-widest">
+          <span>LOADING...</span>
+          <span>{progress}%</span>
+        </div>
 
-        {/* Brand Name */}
-        <h2 className="text-2xl md:text-3xl font-extrabold text-indigo-700">
-          Bright School
-        </h2>
+        {/* PIXEL BAR */}
+        <div className="flex gap-1 border-4 border-white p-2">
+          {Array.from({ length: 20 }).map((_, i) => (
+            <div
+              key={i}
+              className={`w-4 h-6 ${
+                i < Math.floor(progress / 5)
+                  ? "bg-white"
+                  : "bg-transparent"
+              }`}
+            />
+          ))}
+        </div>
 
-        {/* Friendly Text */}
-        <p className="text-lg text-gray-700 font-medium">
-          Learning is fun here! 🎉
-        </p>
-
-      </div>
-    </div>
-  );
-}
-function Mascot() {
-  return (
-    <div className="relative animate-bounce-slow">
-
-      {/* 💬 Speech Bubble */}
-      <div className="absolute -top-12 left-1/2 -translate-x-1/2">
-        <div className="relative bg-white px-4 py-2 rounded-2xl shadow-md animate-pop">
-          <span className="text-sm font-semibold text-indigo-600">
-            Hi friend! 👋
-          </span>
-
-          {/* Bubble tail */}
-          <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-3 h-3 bg-white rotate-45"></div>
+        {/* SCHOOL NAME */}
+        <div className="text-sm opacity-70 tracking-widest">
+          BRIGHT SCHOOL
         </div>
       </div>
-
-      {/* 🧸 Face */}
-      <div className="w-32 h-32 bg-yellow-300 rounded-full flex items-center justify-center shadow-lg">
-
-        {/* Eyes */}
-        <div className="flex gap-6">
-          <Eye />
-          <Eye />
-        </div>
-      </div>
-
-      {/* 😊 Smile */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-16 h-8 border-b-4 border-indigo-700 rounded-b-full"></div>
-    </div>
-  );
-}
-
-function Eye() {
-  return (
-    <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center overflow-hidden">
-      <div className="w-3 h-3 bg-indigo-700 rounded-full animate-blink"></div>
     </div>
   );
 }

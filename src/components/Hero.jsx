@@ -26,24 +26,31 @@ export default function Hero() {
           {/* 🧸 LEFT CONTENT */}
           <div>
             <h1 className="text-4xl md:text-5xl font-extrabold text-indigo-700 leading-tight">
-              Where Little Minds <br />
-              <span className="text-pink-500">Learn & Grow</span> Happily 🎉
+              Where Little Stars <br />
+              <span className="text-pink-500">Begin Bright Journeys</span>
             </h1>
 
             <p className="mt-6 text-lg text-gray-700 max-w-xl">
-              A joyful, safe and playful preschool environment where children
-              explore, imagine and learn every day.
+              Bright Star Preschool provides a joyful, nurturing start where children grow with confidence and curiosity. We inspire a lifelong love for learning in a safe and caring environment.
             </p>
 
             {/* CTA Buttons */}
-            <div className="mt-8 flex flex-wrap gap-4">
-              <button className="bg-indigo-600 text-white px-8 py-3 rounded-full text-lg hover:bg-indigo-700 transition">
-                Book a Visit 🏫
-              </button>
+             <div className="mt-8 flex flex-wrap gap-4">
+              <a 
+                href="https://wa.me/916364259911" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="bg-indigo-600 text-white px-8 py-3 rounded-full text-lg hover:bg-indigo-700 transition inline-block text-center"
+              >
+                Chat With Us 🏫
+              </a>
 
-              <button className="bg-white border-2 border-indigo-600 text-indigo-600 px-8 py-3 rounded-full text-lg hover:bg-indigo-50 transition">
-                Our Programs 📚
-              </button>
+              <a 
+                href="/contact" 
+                className="bg-white border-2 border-indigo-600 text-indigo-600 px-8 py-3 rounded-full text-lg hover:bg-indigo-50 transition inline-block text-center"
+              >
+                Enroll Now 📚
+              </a>
             </div>
           </div>
 

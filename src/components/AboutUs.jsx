@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import programImage from "../assets/program.jpg";
 
 export default function AboutUs() {
   const ref = useRef(null);
@@ -43,8 +44,8 @@ export default function AboutUs() {
 
               {/* Image */}
               <img
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf"
-                alt="Happy child"
+                src={programImage}
+                alt="Bright Star Preschool classroom"
                 className="relative rounded-[50%_40%_60%_50%] object-cover w-full h-[420px]"
               />
             </div>
@@ -57,29 +58,22 @@ export default function AboutUs() {
           >
             {/* Title */}
             <div className="mb-6">
-              <h2 className="text-4xl font-extrabold text-indigo-700">
-                About Us
+              <h2 className="text-4xl font-extrabold text-indigo-700 text-justify">
+                Welcome to Bright Star Preschool
               </h2>
               <div className="w-16 h-1 bg-indigo-500 mt-2 rounded-full"></div>
             </div>
 
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">
-              A Joyful Start to Learning 🌱
-            </h3>
-
-            <p className="text-gray-700 text-lg mb-4 leading-relaxed">
-              We are a nurturing preschool dedicated to creating a joyful,
-              safe, and inspiring environment where children learn through
-              play, exploration, and creativity.
+            <p className="text-gray-700 text-lg mb-4 leading-relaxed text-justify">
+              Bright Star Preschool is a trusted preschool in Bangalore, located in the heart of Banashankari, offering a warm and engaging environment for early learning. Our campus is designed with safe play areas, colorful classrooms, and child-friendly spaces that encourage creativity and confidence.
             </p>
 
-            <p className="text-gray-700 text-lg leading-relaxed">
-              Our approach focuses on early childhood development, emotional
-              well-being, and building strong foundations for lifelong learning.
+            <p className="text-gray-700 text-lg leading-relaxed mb-8 text-justify">
+              With passionate educators and a balanced curriculum focused on experiential learning, we help children build strong academic and social foundations. At Bright Star Preschool, we nurture young minds with care, ensuring every child grows happy, confident, and ready for the next stage of learning.
             </p>
 
             {/* Highlights */}
-            <div className="mt-8 grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 gap-6">
               <Highlight text="Play-based Learning" emoji="🎨" />
               <Highlight text="Safe & Caring Space" emoji="🛡️" />
               <Highlight text="Trained Educators" emoji="👩‍🏫" />
